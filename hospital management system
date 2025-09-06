@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Structure definitions
+// ------------------------- Structures -------------------------
 typedef struct {
     int patient_id;
     char name[50];
@@ -28,114 +28,209 @@ typedef struct {
     char status[20];
 } Appointment;
 
-// Function prototypes
+// ------------------------- Function Prototypes -------------------------
 void add_patient(Patient *patients, int *patient_count);
 void display_patients(Patient *patients, int patient_count);
 void add_doctor(Doctor *doctors, int *doctor_count);
 void display_doctors(Doctor *doctors, int doctor_count);
-void schedule_appointment(Appointment *appointments, int *appointment_count, 
-                          Patient *patients, int patient_count, 
+void schedule_appointment(Appointment *appointments, int *appointment_count,
+                          Patient *patients, int patient_count,
                           Doctor *doctors, int doctor_count);
 void display_appointments(Appointment *appointments, int appointment_count);
 
+// ------------------------- Main Program -------------------------
 int main() {
     Patient patients[100];
     Doctor doctors[50];
     Appointment appointments[200];
 
-int patient_count = 0;
-int doctor_count = 0;
-int appointment_count = 0;
+    int patient_count = 0;
+    int doctor_count = 0;
+    int appointment_count = 0;
 
-int choice;
+    int choice;
 
-while(1) {
-    // Menu system
-    printf("\n--- Hospital Management System ---\n");
-    printf("1. Add Patient\n");
-    printf("2. Display Patients\n");
-    printf("3. Add Doctor\n");
-    printf("4. Display Doctors\n");
-    printf("5. Schedule Appointment\n");
-    printf("6. Display Appointments\n");
-    printf("7. Exit\n");
-    printf("Enter your choice: ");
-    scanf("%d", &choice);
-    
-    switch(choice) {
-        case 1:
-            add_patient(patients, &patient_count);
-            break;
-        case 2:
-            display_patients(patients, patient_count);
-            break;
-        case 3:
-            add_doctor(doctors, &doctor_count);
-            break;
-        case 4:
-            display_doctors(doctors, doctor_count);
-            break;
-        case 5:
-            schedule_appointment(appointments, &appointment_count, 
-                                 patients, patient_count, 
-                                 doctors, doctor_count);
-            break;
-        case 6:
-            display_appointments(appointments, appointment_count);
-            break;
-        case 7:
-            printf("Exiting the system...\n");
-            exit(0);
-        default:
-            printf("Invalid choice! Please try again.\n");
+    while (1) {
+        printf("\n--- Hospital Management System ---\n");
+        printf("1. Add Patient\n");
+        printf("2. Display Patients\n");
+        printf("3. Add Doctor\n");
+        printf("4. Display Doctors\n");
+        printf("5. Schedule Appointment\n");
+        printf("6. Display Appointments\n");
+        printf("7. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                add_patient(patients, &patient_count);
+                break;
+            case 2:
+                display_patients(patients, patient_count);
+                break;
+            case 3:
+                add_doctor(doctors, &doctor_count);
+                break;
+            case 4:
+                display_doctors(doctors, doctor_count);
+                break;
+            case 5:
+                schedule_appointment(appointments, &appointment_count,
+                                     patients, patient_count,
+                                     doctors, doctor_count);
+                break;
+            case 6:
+                display_appointments(appointments, appointment_count);
+                break;
+            case 7:
+                printf("Exiting the system...\n");
+                exit(0);
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
     }
+
+    return 0;
 }
 
-return 0;
-}
+// ------------------------- Function Definitions -------------------------
 
-// Function implementations
+// Add Patient
 void add_patient(Patient *patients, int *patient_count) {
     Patient new_patient;
 
-printf("Enter Patient ID: ");
-scanf("%d", &new_patient.patient_id);
+    printf("Enter Patient ID: ");
+    scanf("%d", &new_patient.patient_id);
 
-printf("Enter Patient Name: ");
-scanf(" [^\n]", new_patient.name);
+    printf("Enter Patient Name: ");
+    scanf(" %[^\n]", new_patient.name);
 
-printf("Enter Patient Age: ");
-scanf("%d", &new_patient.age);
+    printf("Enter Patient Age: ");
+    scanf("%d", &new_patient.age);
 
-printf("Enter Patient Gender: ");
-scanf(" [^\n]", new_patient.gender);
+    printf("Enter Patient Gender: ");
+    scanf(" %[^\n]", new_patient.gender);
 
-printf("Enter Patient Contact: ");
-scanf(" [^\n]", new_patient.contact);
+    printf("Enter Patient Contact: ");
+    scanf(" %[^\n]", new_patient.contact);
 
-printf("Enter Patient Address: ");
-scanf(" [^\n]", new_patient.address);
+    printf("Enter Patient Address: ");
+    scanf(" %[^\n]", new_patient.address);
 
-patients[*patient_count] = new_patient;
-(*patient_count)++;
+    patients[*patient_count] = new_patient;
+    (*patient_count)++;
 
-printf("Patient added successfully!\n");
+    printf("Patient added successfully!\n");
 }
 
+// Display Patients
 void display_patients(Patient *patients, int patient_count) {
-    if(patient_count == 0) {
+    if (patient_count == 0) {
         printf("No patients recorded.\n");
         return;
     }
 
-printf("\n--- Patient List ---\n");
-for(int i = 0; i < patient_count; i++) {
-    printf("ID: %d\n", patients[i].patient_id);
-    printf("Name: %s\n", patients[i].name);
-    printf("Age: %d\n", patients[i].age);
-    printf("Gender: %s\n", patients[i].gender);
-    printf("Contact: %s\n", patients[i].contact);
-    printf("Address: %s\n", patients[i].address);
-    printf("------------------------\n");
+    printf("\n--- Patient List ---\n");
+    for (int i = 0; i < patient_count; i++) {
+        printf("ID: %d\n", patients[i].patient_id);
+        printf("Name: %s\n", patients[i].name);
+        printf("Age: %d\n", patients[i].age);
+        printf("Gender: %s\n", patients[i].gender);
+        printf("Contact: %s\n", patients[i].contact);
+        printf("Address: %s\n", patients[i].address);
+        printf("------------------------\n");
+    }
 }
+
+// Add Doctor
+void add_doctor(Doctor *doctors, int *doctor_count) {
+    Doctor new_doctor;
+
+    printf("Enter Doctor ID: ");
+    scanf("%d", &new_doctor.doctor_id);
+
+    printf("Enter Doctor Name: ");
+    scanf(" %[^\n]", new_doctor.name);
+
+    printf("Enter Specialization: ");
+    scanf(" %[^\n]", new_doctor.specialization);
+
+    printf("Enter Doctor Contact: ");
+    scanf(" %[^\n]", new_doctor.contact);
+
+    doctors[*doctor_count] = new_doctor;
+    (*doctor_count)++;
+
+    printf("Doctor added successfully!\n");
+}
+
+// Display Doctors
+void display_doctors(Doctor *doctors, int doctor_count) {
+    if (doctor_count == 0) {
+        printf("No doctors recorded.\n");
+        return;
+    }
+
+    printf("\n--- Doctor List ---\n");
+    for (int i = 0; i < doctor_count; i++) {
+        printf("ID: %d\n", doctors[i].doctor_id);
+        printf("Name: %s\n", doctors[i].name);
+        printf("Specialization: %s\n", doctors[i].specialization);
+        printf("Contact: %s\n", doctors[i].contact);
+        printf("------------------------\n");
+    }
+}
+
+// Schedule Appointment
+void schedule_appointment(Appointment *appointments, int *appointment_count,
+                          Patient *patients, int patient_count,
+                          Doctor *doctors, int doctor_count) {
+    Appointment new_appointment;
+
+    if (patient_count == 0 || doctor_count == 0) {
+        printf("You must have at least 1 patient and 1 doctor to schedule an appointment.\n");
+        return;
+    }
+
+    printf("Enter Appointment ID: ");
+    scanf("%d", &new_appointment.appointment_id);
+
+    printf("Enter Patient ID: ");
+    scanf("%d", &new_appointment.patient_id);
+
+    printf("Enter Doctor ID: ");
+    scanf("%d", &new_appointment.doctor_id);
+
+    printf("Enter Date (dd/mm/yyyy): ");
+    scanf(" %[^\n]", new_appointment.date);
+
+    printf("Enter Time (hh:mm): ");
+    scanf(" %[^\n]", new_appointment.time);
+
+    strcpy(new_appointment.status, "Scheduled");
+
+    appointments[*appointment_count] = new_appointment;
+    (*appointment_count)++;
+
+    printf("Appointment scheduled successfully!\n");
+}
+
+// Display Appointments
+void display_appointments(Appointment *appointments, int appointment_count) {
+    if (appointment_count == 0) {
+        printf("No appointments scheduled.\n");
+        return;
+    }
+
+    printf("\n--- Appointment List ---\n");
+    for (int i = 0; i < appointment_count; i++) {
+        printf("Appointment ID: %d\n", appointments[i].appointment_id);
+        printf("Patient ID: %d\n", appointments[i].patient_id);
+        printf("Doctor ID: %d\n", appointments[i].doctor_id);
+        printf("Date: %s\n", appointments[i].date);
+        printf("Time: %s\n", appointments[i].time);
+        printf("Status: %s\n", appointments[i].status);
+        printf("------------------------\n");
+    }
 }
