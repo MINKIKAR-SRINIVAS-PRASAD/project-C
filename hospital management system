@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// ------------------------- Structures -------------------------
 typedef struct {
     int patient_id;
     char name[50];
@@ -28,7 +27,6 @@ typedef struct {
     char status[20];
 } Appointment;
 
-// ------------------------- Function Prototypes -------------------------
 void add_patient(Patient *patients, int *patient_count);
 void display_patients(Patient *patients, int patient_count);
 void add_doctor(Doctor *doctors, int *doctor_count);
@@ -38,7 +36,7 @@ void schedule_appointment(Appointment *appointments, int *appointment_count,
                           Doctor *doctors, int doctor_count);
 void display_appointments(Appointment *appointments, int appointment_count);
 
-// ------------------------- Main Program -------------------------
+
 int main() {
     Patient patients[100];
     Doctor doctors[50];
@@ -94,7 +92,7 @@ int main() {
     return 0;
 }
 
-// ------------------------- Function Definitions -------------------------
+
 
 // Add Patient
 void add_patient(Patient *patients, int *patient_count) {
