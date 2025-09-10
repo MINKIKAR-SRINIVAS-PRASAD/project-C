@@ -1,10 +1,8 @@
 - 👋 Hi, I’m @MINKIKAR-SRINIVAS-PRASAD
-- 👀 I’m interested in ... video games, gym
-- 🌱 I’m currently learning ... git hub
-- 💞️ I’m looking to collaborate on ... free fire India
-- 📫 How to reach me ... instagram id : m.srinivas_prasad
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+- 👀 I’m interested in ... coding 
+- 🌱 I’m currently learning ... git, git hub
+- 💞️ I’m looking to collaborate on ... TCS
+- 📫 How to reach me ... @gmail=srinivasminki@gmail.com
 
 <!---
 MINKIKAR-SRINIVAS-PRASAD/MINKIKAR-SRINIVAS-PRASAD is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
